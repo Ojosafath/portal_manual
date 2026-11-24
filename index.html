@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Bilingual GIG ELD Portal operations guide for drivers, dispatchers and administrators.">
+<title>GIG ELD Portal | Operations Guide</title>
+<style>
+:root{--navy:#10243a;--blue:#087eae;--blue2:#eaf6fb;--ink:#182433;--muted:#627386;--line:#dce5ec;--bg:#f4f7fa;--white:#fff;--green:#16794a;--shadow:0 8px 28px rgba(16,36,58,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.58 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{background:linear-gradient(120deg,#10243a,#17496a);color:white;padding:28px 20px 24px}
+.top{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}.mark{width:42px;height:42px;border-radius:12px;background:#fff;color:#087eae;display:grid;place-items:center;font-weight:900;font-size:20px}
+.brand small{display:block;color:#c9deeb;letter-spacing:.12em;font-size:11px;font-weight:700}.brand strong{font-size:20px}
+.lang{display:flex;gap:6px;background:#ffffff20;padding:5px;border-radius:12px}.lang button{border:0;background:transparent;color:white;padding:9px 14px;border-radius:8px;font-weight:700;cursor:pointer}.lang button.active{background:white;color:var(--navy)}
+.hero{max-width:1180px;margin:30px auto 0}.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#9ed7ef;font-weight:800}.hero h1{font-size:clamp(27px,4vw,42px);line-height:1.12;margin:8px 0 12px}.hero p{max-width:760px;color:#e0edf4;margin:0}
+.wrap{max-width:1180px;margin:24px auto;padding:0 18px 60px;display:grid;grid-template-columns:260px minmax(0,1fr);gap:22px}
+aside{align-self:start;position:sticky;top:16px;background:white;border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+aside h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:2px 8px 10px}
+nav a{display:flex;gap:10px;align-items:flex-start;padding:10px 9px;border-radius:9px;color:var(--ink);text-decoration:none;font-size:14px;font-weight:650}
+nav a:hover,nav a.active{background:var(--blue2);color:#075d83}
+.num{flex:none;width:24px;height:24px;border-radius:7px;background:#eaf0f5;display:grid;place-items:center;font-size:12px}
+.search{width:100%;margin-top:12px;border:1px solid var(--line);border-radius:9px;padding:11px 12px;font:inherit}
+main{min-width:0}.intro,.module{background:white;border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:18px;box-shadow:var(--shadow)}
+.intro h2,.module h2{margin:0 0 8px;font-size:23px;line-height:1.25}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
+.tile{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fbfdff}.tile b{display:block;margin-bottom:4px}.tile p{font-size:14px;color:var(--muted);margin:0}
+.module{scroll-margin-top:16px}.module-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}.module-no{background:var(--navy);color:white;padding:5px 9px;border-radius:7px;font-size:12px;font-weight:800;white-space:nowrap}
+h3{font-size:17px;margin:20px 0 8px}p{margin:8px 0 12px}ol,ul{padding-left:23px}li{margin:8px 0}strong{color:#142b40}
+.callout{border-left:4px solid var(--blue);background:var(--blue2);padding:12px 14px;border-radius:0 9px 9px 0;margin:15px 0}
+.figure-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}
+figure{margin:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fafcfd}
+figure img{display:block;width:100%;height:auto;max-height:360px;object-fit:contain;background:#eef2f5}
+figcaption{padding:8px 10px;font-size:12px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}th,td{border:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}th{background:#eef4f8}
+.footer{color:var(--muted);font-size:12px;text-align:center;padding:18px}
+.hidden{display:none!important}.no-results{padding:20px;background:#fff;border:1px solid var(--line);border-radius:12px}
+@media(max-width:800px){.wrap{grid-template-columns:1fr}aside{position:static}.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:540px){header{padding:20px 16px}.hero{margin-top:22px}.wrap{padding:0 12px 40px}.intro,.module{padding:17px}.grid,.figure-grid{grid-template-columns:1fr}.brand strong{font-size:17px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <div class="brand"><div class="mark">GIG</div><div><small>ELECTRONIC LOGGING DEVICE</small><strong>GIG ELD PORTAL</strong></div></div>
+    <div class="lang" aria-label="Language">
+      <button id="enBtn" class="active" type="button">English</button>
+      <button id="esBtn" type="button">Español</button>
+    </div>
+  </div>
+  <div class="hero">
+    <div class="eyebrow" data-en="Bilingual operations guide" data-es="Guía operativa bilingüe">Bilingual operations guide</div>
+    <h1 data-en="GIG ELD Portal Guide" data-es="Guía del Portal GIG ELD">GIG ELD Portal Guide</h1>
+    <p data-en="Step-by-step instructions for driver setup, truck and trailer records, GPS monitoring, trip history and IFTA mileage reports."
+       data-es="Instrucciones paso a paso para configurar conductores, registrar camiones y remolques, monitorear GPS, revisar recorridos y generar reportes de millas IFTA.">Step-by-step instructions for driver setup, truck and trailer records, GPS monitoring, trip history and IFTA mileage reports.</p>
+  </div>
+</header>
+
+<div class="wrap">
+<aside>
+  <h2 data-en="Guide contents" data-es="Contenido de la guía">Guide contents</h2>
+  <nav>
+    <a href="#overview"><span class="num">⌂</span><span data-en="Overview" data-es="Resumen">Overview</span></a>
+    <a href="#drivers"><span class="num">01</span><span data-en="Drivers & access" data-es="Conductores y acceso">Drivers & access</span></a>
+    <a href="#assets"><span class="num">02</span><span data-en="Tractors & trailers" data-es="Camiones y remolques">Tractors & trailers</span></a>
+    <a href="#monitoring"><span class="num">03</span><span data-en="GPS monitoring" data-es="Monitoreo GPS">GPS monitoring</span></a>
+    <a href="#ifta"><span class="num">04</span><span data-en="IFTA / State Mileage" data-es="IFTA / Millas por estado">IFTA / State Mileage</span></a>
+  </nav>
+  <input class="search" id="search" type="search" placeholder="Search this guide..." aria-label="Search guide">
+</aside>
+
+<main id="content">
+<section class="intro searchable" id="overview">
+  <h2 data-en="What this guide covers" data-es="Qué incluye esta guía">What this guide covers</h2>
+  <p class="muted" data-en="This guide follows the four modules in the supplied GIG ELD Portal manual. Portal menu names and field labels are kept in English so you can find them on screen."
+     data-es="Esta guía sigue los cuatro módulos del manual original del Portal GIG ELD. Los nombres de los menús y campos se mantienen en inglés para que podás encontrarlos en pantalla.">This guide follows the four modules in the supplied GIG ELD Portal manual. Portal menu names and field labels are kept in English so you can find them on screen.</p>
+  <div class="grid">
+    <div class="tile"><b data-en="01 · Drivers" data-es="01 · Conductores">01 · Drivers</b><p data-en="Create driver profiles, credentials and HOS/DVIR permissions." data-es="Crear perfiles, credenciales y permisos HOS/DVIR.">Create driver profiles, credentials and HOS/DVIR permissions.</p></div>
+    <div class="tile"><b data-en="02 · Assets" data-es="02 · Unidades">02 · Assets</b><p data-en="Add tractors and trailers with their required vehicle information." data-es="Registrar camiones y remolques con sus datos requeridos.">Add tractors and trailers with their required vehicle information.</p></div>
+    <div class="tile"><b data-en="03 · Monitoring" data-es="03 · Monitoreo">03 · Monitoring</b><p data-en="View live vehicle location, status, speed and historical routes." data-es="Ver ubicación, estado, velocidad y recorridos históricos.">View live vehicle location, status, speed and historical routes.</p></div>
+    <div class="tile"><b data-en="04 · State Mileage" data-es="04 · Millas por estado">04 · State Mileage</b><p data-en="Calculate and download mileage details for IFTA reporting." data-es="Calcular y descargar el detalle de millas para reportes IFTA.">Calculate and download mileage details for IFTA reporting.</p></div>
+  </div>
+  <div class="callout"><strong data-en="Important" data-es="Importante">Important</strong> — <span data-en="This guide explains the procedures shown in the supplied manual. Your available options may depend on your account permissions and the equipment installed in each truck."
+  data-es="Esta guía explica los procedimientos del manual proporcionado. Las opciones disponibles pueden depender de los permisos de tu cuenta y del equipo instalado en cada camión.">This guide explains the procedures shown in the supplied manual. Your available options may depend on your account permissions and the equipment installed in each truck.</span></div>
+</section>
+
+<section class="module searchable" id="drivers">
+<div class="module-head"><span class="module-no">MODULE 01</span><div><h2 data-en="Add and configure a new driver" data-es="Agregar y configurar un conductor nuevo">Add and configure a new driver</h2><div class="muted" data-en="Driver setup has two required stages: create the profile in the main portal, then configure login details and HOS rules in eDash."
+data-es="El registro tiene dos etapas obligatorias: crear el perfil en el portal principal y después configurar las credenciales y reglas HOS en eDash.">Driver setup has two required stages: create the profile in the main portal, then configure login details and HOS rules in eDash.</div></div></div>
+<h3 data-en="Stage 1 — Create the driver profile" data-es="Fase 1 — Crear el perfil del conductor">Stage 1 — Create the driver profile</h3>
+<ol>
+<li><strong data-en="Open Drivers:" data-es="Abrir Drivers:">Open Drivers:</strong> <span data-en="Sign in to the portal, go to Administration → Drivers, and click the blue New Driver link on the right side of the active drivers table." data-es="Iniciá sesión en el portal, entrá a Administration → Drivers y hacé clic en el enlace azul New Driver, a la derecha de la tabla de conductores activos.">Sign in to the portal, go to Administration → Drivers, and click the blue New Driver link on the right side of the active drivers table.</span></li>
+<li><strong data-en="Enter driver details:" data-es="Ingresar los datos:">Enter driver details:</strong> <span data-en="Complete Name, Last Name, Driver License and Driver License Expiration. Use the calendar for the expiration date." data-es="Completá Name, Last Name, Driver License y Driver License Expiration. Usá el calendario para la fecha de vencimiento.">Complete Name, Last Name, Driver License and Driver License Expiration. Use the calendar for the expiration date.</span></li>
+<li><strong data-en="Optional details:" data-es="Datos opcionales:">Optional details:</strong> <span data-en="You may also enter Alias, Employee ID, Phone, Emergency Contact, Vehicle or Access ID." data-es="También podés ingresar Alias, Employee ID, Phone, Emergency Contact, Vehicle o Access ID.">You may also enter Alias, Employee ID, Phone, Emergency Contact, Vehicle or Access ID.</span></li>
+<li><strong data-en="Save:" data-es="Guardar:">Save:</strong> <span data-en="Click Save at the lower-left corner of the orange form." data-es="Hacé clic en Save en la esquina inferior izquierda del formulario naranja.">Click Save at the lower-left corner of the orange form.</span></li>
+</ol>
+<div class="callout"><strong data-en="Check:" data-es="Verificación:">Check:</strong> <span data-en="The new driver should appear in the Drivers table with Active status." data-es="El nuevo conductor debe aparecer en la tabla Drivers con estado Active.">The new driver should appear in the Drivers table with Active status.</span></div>
+<div class="figure-grid">
+<figure><img src="assets/page-1-figure-2.png" alt="Driver list and New Driver form"><figcaption data-en="Source manual, page 1 — Drivers list and New Driver form." data-es="Manual original, página 1 — Lista Drivers y formulario New Driver.">Source manual, page 1 — Drivers list and New Driver form.</figcaption></figure>
+<figure><img src="assets/page-2-figure-1.png" alt="New Driver form"><figcaption data-en="Source manual, page 2 — Driver form example." data-es="Manual original, página 2 — Ejemplo del formulario de conductor.">Source manual, page 2 — Driver form example.</figcaption></figure>
+</div>
+<h3 data-en="Stage 2 — Set login credentials and permissions in eDash" data-es="Fase 2 — Configurar credenciales y permisos en eDash">Stage 2 — Set login credentials and permissions in eDash</h3>
+<ol>
+<li><strong data-en="Open eDash:" data-es="Entrar a eDash:">Open eDash:</strong> <span data-en="From the dark top navigation bar, open eDash and select HOS + DVIR." data-es="En la barra superior oscura, abrí eDash y seleccioná HOS + DVIR.">From the dark top navigation bar, open eDash and select HOS + DVIR.</span></li>
+<li><strong data-en="Open the driver directory:" data-es="Abrir el directorio:">Open the driver directory:</strong> <span data-en="Go to Manage → Carriers. In the ACTIONS column, click the Drivers icon (person with a steering wheel; second icon from the left)." data-es="Entrá a Manage → Carriers. En la columna ACTIONS, hacé clic en el ícono Drivers (persona con volante; segundo ícono de izquierda a derecha).">Go to Manage → Carriers. In the ACTIONS column, click the Drivers icon (person with a steering wheel; second icon from the left).</span></li>
+<li><strong data-en="Edit the driver:" data-es="Editar el conductor:">Edit the driver:</strong> <span data-en="Find the new driver in the lower Drivers table (use Search) and click the blue pencil icon in Actions." data-es="Buscá al conductor nuevo en la tabla inferior Drivers (usá Search) y hacé clic en el lápiz azul de Actions.">Find the new driver in the lower Drivers table (use Search) and click the blue pencil icon in Actions.</span></li>
+<li><strong data-en="Enter credentials and rules:" data-es="Ingresar credenciales y reglas:">Enter credentials and rules:</strong> <span data-en="Enter Username, Password and Confirmation. Select Home Base, Ruleset (for example, 70 Hours/8 Days), 24-Period Starting Time, DVIR Access, Units and Registration State. Verify the License Number." data-es="Ingresá Username, Password y Confirmation. Seleccioná Home Base, Ruleset (por ejemplo, 70 Hours/8 Days), 24-Period Starting Time, DVIR Access, Units y Registration State. Verificá License Number.">Enter Username, Password and Confirmation. Select Home Base, Ruleset (for example, 70 Hours/8 Days), 24-Period Starting Time, DVIR Access, Units and Registration State. Verify the License Number.</span></li>
+<li><strong data-en="Enable permissions and save:" data-es="Activar permisos y guardar:">Enable permissions and save:</strong> <span data-en="Check Active, Personal Use (Personal Move) and Yard Move. Also select the applicable DVIR options, such as DVIR WiFi Only and Allow to take DVIR photo. Click the blue Save button." data-es="Marcá Active, Personal Use (Personal Move) y Yard Move. También seleccioná las opciones DVIR que correspondan, como DVIR WiFi Only y Allow to take DVIR photo. Hacé clic en el botón azul Save.">Check Active, Personal Use (Personal Move) and Yard Move. Also select the applicable DVIR options, such as DVIR WiFi Only and Allow to take DVIR photo. Click the blue Save button.</span></li>
+</ol>
+<div class="callout"><strong data-en="Check:" data-es="Verificación:">Check:</strong> <span data-en="A blue check mark should appear in the driver's Active column. The driver can then sign in to the ELD mobile app." data-es="Debe aparecer una marca azul en la columna Active del conductor. Después podrá iniciar sesión en la aplicación móvil ELD.">A blue check mark should appear in the driver's Active column. The driver can then sign in to the ELD mobile app.</span></div>
+<div class="figure-grid">
+<figure><img src="assets/page-2-figure-2.png" alt="eDash Manage view"><figcaption data-en="Source manual, page 2 — eDash access and Manage screen." data-es="Manual original, página 2 — Acceso a eDash y pantalla Manage.">Source manual, page 2 — eDash access and Manage screen.</figcaption></figure>
+<figure><img src="assets/page-3-figure-1.png" alt="Driver permissions form"><figcaption data-en="Source manual, page 3 — Driver credentials, rules and permissions." data-es="Manual original, página 3 — Credenciales, reglas y permisos del conductor.">Source manual, page 3 — Driver credentials, rules and permissions.</figcaption></figure>
+</div>
+</section>
+
+<section class="module searchable" id="assets">
+<div class="module-head"><span class="module-no">MODULE 02</span><div><h2 data-en="Add a tractor or trailer" data-es="Agregar un camión (Tractor) o remolque (Trailer)">Add a tractor or trailer</h2><div class="muted" data-en="Vehicle units and trailers are added from Assets in the eDash management area." data-es="Los camiones y remolques se registran desde Assets, dentro del área de administración de eDash.">Vehicle units and trailers are added from Assets in the eDash management area.</div></div></div>
+<ol>
+<li><strong data-en="Open Assets:" data-es="Abrir Assets:">Open Assets:</strong> <span data-en="Go to eDash (HOS + DVIR) → Manage. In the Carriers table, use the ACTIONS column and click the truck icon (Assets; fourth icon from the left)." data-es="Entrá a eDash (HOS + DVIR) → Manage. En la tabla Carriers, buscá la columna ACTIONS y hacé clic en el ícono del camión (Assets; cuarto ícono de izquierda a derecha).">Go to eDash (HOS + DVIR) → Manage. In the Carriers table, use the ACTIONS column and click the truck icon (Assets; fourth icon from the left).</span></li>
+<li><strong data-en="Start a new record:" data-es="Iniciar un registro nuevo:">Start a new record:</strong> <span data-en="In the Assets table, click the blue + New button at the upper-right corner." data-es="En la tabla Assets, hacé clic en el botón azul + New, en la esquina superior derecha.">In the Assets table, click the blue + New button at the upper-right corner.</span></li>
+<li><strong data-en="Choose the type:" data-es="Elegir el tipo:">Choose the type:</strong> <span data-en="In Asset Type, select Tractor or Trailer. Then choose the matching Asset Subtype." data-es="En Asset Type, seleccioná Tractor o Trailer. Después elegí el Asset Subtype correspondiente.">In Asset Type, select Tractor or Trailer. Then choose the matching Asset Subtype.</span></li>
+<li><strong data-en="Complete required fields:" data-es="Completar los campos requeridos:">Complete required fields:</strong> <span data-en="Fill in the required and operational information, make sure Active is checked, and click the blue Save button." data-es="Completá la información obligatoria y operativa, verificá que Active esté marcado y hacé clic en el botón azul Save.">Fill in the required and operational information, make sure Active is checked, and click the blue Save button.</span></li>
+</ol>
+<h3 data-en="Available subtypes" data-es="Subtipos disponibles">Available subtypes</h3>
+<table><thead><tr><th data-en="Asset type" data-es="Tipo de unidad">Asset type</th><th data-en="Subtypes listed in the manual" data-es="Subtipos indicados en el manual">Subtypes listed in the manual</th></tr></thead><tbody>
+<tr><td><strong>Tractor</strong></td><td>None, Bus, Freezer Truck, Truck, Crane</td></tr>
+<tr><td><strong>Trailer</strong></td><td>None, Flat, Trailer</td></tr>
+</tbody></table>
+<h3 data-en="Asset form fields" data-es="Campos del formulario Asset">Asset form fields</h3>
+<table><thead><tr><th data-en="Field" data-es="Campo">Field</th><th data-en="Applies to" data-es="Aplica a">Applies to</th><th data-en="What to enter" data-es="Qué ingresar">What to enter</th></tr></thead><tbody>
+<tr><td><strong>Number *</strong></td><td>Tractor and Trailer</td><td data-en="Fleet unit number or internal identifier." data-es="Número de unidad o identificador interno de la flota.">Fleet unit number or internal identifier.</td></tr>
+<tr><td><strong>VIN *</strong></td><td>Tractor</td><td data-en="Vehicle identification number (17 characters)." data-es="Número de identificación del vehículo (17 caracteres).">Vehicle identification number (17 characters).</td></tr>
+<tr><td><strong>Fuel Type Primary *</strong></td><td>Tractor</td><td data-en="Main fuel type, for example Diesel or Other." data-es="Tipo de combustible principal, por ejemplo Diesel u Other.">Main fuel type, for example Diesel or Other.</td></tr>
+<tr><td><strong>Plate</strong></td><td>Tractor and Trailer</td><td data-en="Registered license plate number." data-es="Número de placa o matrícula registrada.">Registered license plate number.</td></tr>
+<tr><td><strong>Registration State *</strong></td><td>Tractor and Trailer</td><td data-en="State where the unit is registered (example: FL)." data-es="Estado donde está registrada la unidad (ejemplo: FL).">State where the unit is registered (example: FL).</td></tr>
+<tr><td><strong>Home Base *</strong></td><td>Tractor and Trailer</td><td data-en="Assigned terminal or base (example: Home Terminal)." data-es="Terminal o base asignada (ejemplo: Home Terminal).">Assigned terminal or base (example: Home Terminal).</td></tr>
+<tr><td><strong>Custom DVIR / Description</strong></td><td>Tractor and Trailer</td><td data-en="Optional custom inspection template and unit notes." data-es="Opcional: plantilla personalizada de inspección y notas de la unidad.">Optional custom inspection template and unit notes.</td></tr>
+<tr><td><strong>ECM Identifier</strong></td><td>Tractor</td><td data-en="Optional MAC address or ELD device identifier (##:##:##:##:##:##)." data-es="Opcional: dirección MAC o identificador del dispositivo ELD (##:##:##:##:##:##).">Optional MAC address or ELD device identifier (##:##:##:##:##:##).</td></tr>
+</tbody></table>
+<div class="callout"><strong data-en="Check:" data-es="Verificación:">Check:</strong> <span data-en="The form closes and the new truck or trailer appears in the Assets table with Active status." data-es="El formulario se cierra y el camión o remolque nuevo aparece en la tabla Assets con estado Active.">The form closes and the new truck or trailer appears in the Assets table with Active status.</span></div>
+<div class="figure-grid">
+<figure><img src="assets/page-4-figure-1.png" alt="Manage and Carriers screen"><figcaption data-en="Source manual, page 4 — Manage and Carriers." data-es="Manual original, página 4 — Manage y Carriers.">Source manual, page 4 — Manage and Carriers.</figcaption></figure>
+<figure><img src="assets/page-4-figure-4.png" alt="Asset type selection"><figcaption data-en="Source manual, page 4 — Asset Type selection." data-es="Manual original, página 4 — Selección de Asset Type.">Source manual, page 4 — Asset Type selection.</figcaption></figure>
+<figure><img src="assets/page-4-figure-5.png" alt="Tractor subtype options"><figcaption data-en="Source manual, page 4 — Tractor subtype options." data-es="Manual original, página 4 — Opciones de subtipo Tractor.">Source manual, page 4 — Tractor subtype options.</figcaption></figure>
+<figure><img src="assets/page-4-figure-6.png" alt="Trailer subtype options"><figcaption data-en="Source manual, page 4 — Trailer subtype options." data-es="Manual original, página 4 — Opciones de subtipo Trailer.">Source manual, page 4 — Trailer subtype options.</figcaption></figure>
+</div>
+</section>
+
+<section class="module searchable" id="monitoring">
+<div class="module-head"><span class="module-no">MODULE 03</span><div><h2 data-en="Monitoring: GPS tracking and routes" data-es="Monitoring: rastreo GPS y recorridos">Monitoring: GPS tracking and routes</h2><div class="muted" data-en="The Monitoring menu is the third tab in the dark top navigation. It provides live and historical views for company trucks equipped with premium GPS devices."
+data-es="El menú Monitoring es la tercera pestaña de la barra superior oscura. Permite ver información en vivo e histórica de los camiones de la compañía que tienen equipos GPS premium instalados.">The Monitoring menu is the third tab in the dark top navigation. It provides live and historical views for company trucks equipped with premium GPS devices.</div></div></div>
+<h3 data-en="1. Live Monitoring Legacy and Live Monitoring" data-es="1. Live Monitoring Legacy y Live Monitoring">1. Live Monitoring Legacy and Live Monitoring</h3>
+<p data-en="Both tools show the vehicle's location on a map (Map or Satellite view), operating status (Off, Idle or Moving), fuel percentage (Fuel %) and current speed."
+data-es="Ambas herramientas muestran la ubicación del vehículo en el mapa (vista Map o Satellite), el estado operativo (Off, Idle o Moving), el porcentaje de combustible (Fuel %) y la velocidad actual.">Both tools show the vehicle's location on a map (Map or Satellite view), operating status (Off, Idle or Moving), fuel percentage (Fuel %) and current speed.</p>
+<ul>
+<li><strong>Live Monitoring Legacy:</strong> <span data-en="Includes configurable automatic refresh (for example, every 15 seconds), a Today's Activity tab, Find... search and alerts for vehicles without an assigned driver." data-es="Incluye actualización automática configurable (por ejemplo, cada 15 segundos), la pestaña Today's Activity, búsqueda Find... y alertas de vehículos sin conductor asignado.">Includes configurable automatic refresh (for example, every 15 seconds), a Today's Activity tab, Find... search and alerts for vehicles without an assigned driver.</span></li>
+<li><strong>Live Monitoring:</strong> <span data-en="The modern view provides a larger map, quick filters for vehicles and Points of Interest (POIs) in the upper-left corner. Click a truck to open its detail card." data-es="La vista moderna ofrece un mapa más amplio, filtros rápidos de vehículos y Points of Interest (POIs) en la esquina superior izquierda. Hacé clic en un camión para abrir su tarjeta de detalles.">The modern view provides a larger map, quick filters for vehicles and Points of Interest (POIs) in the upper-left corner. Click a truck to open its detail card.</span></li>
+</ul>
+<h3 data-en="2. Live Routing" data-es="2. Live Routing">2. Live Routing</h3>
+<p data-en="Open Monitoring → Live Routing to view the progress of assigned routes, estimated times and delivery stops in progress."
+data-es="Abrí Monitoring → Live Routing para ver el avance de las rutas asignadas, los tiempos estimados y los puntos de entrega en curso.">Open Monitoring → Live Routing to view the progress of assigned routes, estimated times and delivery stops in progress.</p>
+<h3 data-en="3. Historical monitoring" data-es="3. Monitoreo histórico">3. Historical monitoring</h3>
+<ol>
+<li><strong data-en="Set the period:" data-es="Definir el período:">Set the period:</strong> <span data-en="Open Monitoring → Historical. In the left Search Form panel, enter the start date and time (From) and end date and time (To). You can also use Today, Yesterday, This Week, Last Week, This Month or Last Month." data-es="Entrá a Monitoring → Historical. En el panel izquierdo Search Form, ingresá la fecha y hora inicial (From) y final (To). También podés usar Today, Yesterday, This Week, Last Week, This Month o Last Month.">Open Monitoring → Historical. In the left Search Form panel, enter the start date and time (From) and end date and time (To). You can also use Today, Yesterday, This Week, Last Week, This Month or Last Month.</span></li>
+<li><strong data-en="Filter and search:" data-es="Filtrar y buscar:">Filter and search:</strong> <span data-en="Select a vehicle in Vehicle or an operator in Driver, then click Search." data-es="Seleccioná un vehículo en Vehicle o un operador en Driver y después hacé clic en Search.">Select a vehicle in Vehicle or an operator in Driver, then click Search.</span></li>
+</ol>
+<div class="callout"><strong data-en="Check:" data-es="Verificación:">Check:</strong> <span data-en="Live views show location, status and speed. Historical shows the complete route in the Search Results tab." data-es="Las vistas en vivo muestran ubicación, estado y velocidad. Historical dibuja el recorrido completo en la pestaña Search Results.">Live views show location, status and speed. Historical shows the complete route in the Search Results tab.</span></div>
+<div class="figure-grid">
+<figure><img src="assets/page-5-figure-1.png" alt="Monitoring menu"><figcaption data-en="Source manual, page 5 — Monitoring menu options." data-es="Manual original, página 5 — Opciones del menú Monitoring.">Source manual, page 5 — Monitoring menu options.</figcaption></figure>
+<figure><img src="assets/page-5-figure-2.png" alt="Live Monitoring Legacy map"><figcaption data-en="Source manual, page 5 — Live Monitoring Legacy." data-es="Manual original, página 5 — Live Monitoring Legacy.">Source manual, page 5 — Live Monitoring Legacy.</figcaption></figure>
+<figure><img src="assets/page-6-figure-1.png" alt="Live Monitoring detail card"><figcaption data-en="Source manual, page 6 — Live Monitoring vehicle detail card." data-es="Manual original, página 6 — Tarjeta de detalles del vehículo en Live Monitoring.">Source manual, page 6 — Live Monitoring vehicle detail card.</figcaption></figure>
+<figure><img src="assets/page-6-figure-2.png" alt="Historical route map"><figcaption data-en="Source manual, page 6 — Historical route view." data-es="Manual original, página 6 — Vista de recorrido histórico.">Source manual, page 6 — Historical route view.</figcaption></figure>
+</div>
+</section>
+
+<section class="module searchable" id="ifta">
+<div class="module-head"><span class="module-no">MODULE 04</span><div><h2 data-en="Generate and download IFTA reports (State Mileage)" data-es="Generar y descargar reportes IFTA (State Mileage)">Generate and download IFTA reports (State Mileage)</h2><div class="muted" data-en="State Mileage calculates miles traveled in each state or jurisdiction for monthly or quarterly IFTA fuel tax reporting."
+data-es="State Mileage calcula las millas recorridas en cada estado o jurisdicción para la declaración mensual o trimestral de impuestos de combustible IFTA.">State Mileage calculates miles traveled in each state or jurisdiction for monthly or quarterly IFTA fuel tax reporting.</div></div></div>
+<ol>
+<li><strong data-en="Open State Mileage:" data-es="Abrir State Mileage:">Open State Mileage:</strong> <span data-en="Enter eDash (HOS + DVIR) and select State Mileage in the left menu, below Fuel Receipts." data-es="Entrá a eDash (HOS + DVIR) y seleccioná State Mileage en el menú izquierdo, debajo de Fuel Receipts.">Enter eDash (HOS + DVIR) and select State Mileage in the left menu, below Fuel Receipts.</span></li>
+<li><strong data-en="Choose the period:" data-es="Seleccionar el período:">Choose the period:</strong> <span data-en="Select the fiscal year in Year (for example, 2026). Choose a quarter in Quarter (1: Jan–Mar, 2: Apr–Jun, 3: Jul–Sep, 4: Oct–Dec), or leave Quarter as None and select a specific Month." data-es="Seleccioná el año fiscal en Year (por ejemplo, 2026). Elegí el trimestre en Quarter (1: Jan–Mar, 2: Apr–Jun, 3: Jul–Sep, 4: Oct–Dec), o dejá Quarter en None y seleccioná un mes específico en Month.">Select the fiscal year in Year (for example, 2026). Choose a quarter in Quarter (1: Jan–Mar, 2: Apr–Jun, 3: Jul–Sep, 4: Oct–Dec), or leave Quarter as None and select a specific Month.</span></li>
+<li><strong data-en="Select the vehicle:" data-es="Seleccionar el vehículo:">Select the vehicle:</strong> <span data-en="Confirm Region is USA and choose the Carrier. Open Vehicle and select the unit using its VIN and truck number." data-es="Verificá que Region sea USA y seleccioná el Carrier. Abrí Vehicle y seleccioná la unidad usando su VIN y número de camión.">Confirm Region is USA and choose the Carrier. Open Vehicle and select the unit using its VIN and truck number.</span></li>
+<li><strong data-en="Run the calculation:" data-es="Ejecutar el cálculo:">Run the calculation:</strong> <span data-en="Click the blue Execute button to generate the summary: Total IFTA Miles, Total Non-IFTA Miles, Total Miles, Total Gallons, MPG and Total Tax Due, plus the Jurisdiction table." data-es="Hacé clic en el botón azul Execute para generar el resumen: Total IFTA Miles, Total Non-IFTA Miles, Total Miles, Total Gallons, MPG y Total Tax Due, además de la tabla Jurisdiction.">Click the blue Execute button to generate the summary: Total IFTA Miles, Total Non-IFTA Miles, Total Miles, Total Gallons, MPG and Total Tax Due, plus the Jurisdiction table.</span></li>
+<li><strong data-en="Download the report:" data-es="Descargar el reporte:">Download the report:</strong> <span data-en="Click Download above the upper-right corner of the jurisdictions table." data-es="Hacé clic en Download, encima de la esquina superior derecha de la tabla de jurisdicciones.">Click Download above the upper-right corner of the jurisdictions table.</span></li>
+</ol>
+<div class="callout"><strong data-en="Check:" data-es="Verificación:">Check:</strong> <span data-en="The report file downloads with total miles and taxable miles for each state traveled during the selected period." data-es="Se descarga un archivo con el total de millas y las millas gravables (Taxable Miles) de cada estado recorrido durante el período seleccionado.">The report file downloads with total miles and taxable miles for each state traveled during the selected period.</span></div>
+<div class="figure-grid">
+<figure><img src="assets/page-7-figure-1.png" alt="State Mileage menu access"><figcaption data-en="Source manual, page 7 — State Mileage in the side menu." data-es="Manual original, página 7 — State Mileage en el menú lateral.">Source manual, page 7 — State Mileage in the side menu.</figcaption></figure>
+<figure><img src="assets/page-7-figure-2.png" alt="State Mileage filters"><figcaption data-en="Source manual, page 7 — Year, Quarter, Month and Vehicle filters." data-es="Manual original, página 7 — Filtros Year, Quarter, Month y Vehicle.">Source manual, page 7 — Year, Quarter, Month and Vehicle filters.</figcaption></figure>
+<figure><img src="assets/page-7-figure-3.png" alt="Quarter selection"><figcaption data-en="Source manual, page 7 — Quarter selection." data-es="Manual original, página 7 — Selección de Quarter.">Source manual, page 7 — Quarter selection.</figcaption></figure>
+<figure><img src="assets/page-7-figure-4.png" alt="Vehicle selection"><figcaption data-en="Source manual, page 7 — Vehicle selection." data-es="Manual original, página 7 — Selección de Vehicle.">Source manual, page 7 — Vehicle selection.</figcaption></figure>
+<figure><img src="assets/page-7-figure-5.png" alt="IFTA mileage results and download"><figcaption data-en="Source manual, page 7 — IFTA summary, Jurisdiction table and Download." data-es="Manual original, página 7 — Resumen IFTA, tabla Jurisdiction y Download.">Source manual, page 7 — IFTA summary, Jurisdiction table and Download.</figcaption></figure>
+</div>
+</section>
+<div class="footer" data-en="GIG ELD Portal · Bilingual operations guide · Based on the supplied 7-page portal manual."
+data-es="GIG ELD Portal · Guía operativa bilingüe · Basada en el manual del portal de 7 páginas proporcionado.">GIG ELD Portal · Bilingual operations guide · Based on the supplied 7-page portal manual.</div>
+</main>
+</div>
+<script>
+const enBtn=document.getElementById('enBtn'),esBtn=document.getElementById('esBtn');
+function setLang(lang){
+ document.documentElement.lang=lang;
+ document.querySelectorAll('[data-en]').forEach(el=>{el.textContent=el.dataset[lang]||el.dataset.en});
+ enBtn.classList.toggle('active',lang==='en');esBtn.classList.toggle('active',lang==='es');
+ localStorage.setItem('gig-portal-lang',lang);
+}
+enBtn.addEventListener('click',()=>setLang('en'));
+esBtn.addEventListener('click',()=>setLang('es'));
+setLang(localStorage.getItem('gig-portal-lang')||'en');
+const search=document.getElementById('search');
+search.addEventListener('input',()=>{
+ const q=search.value.trim().toLowerCase();
+ document.querySelectorAll('.searchable').forEach(section=>{
+   section.classList.toggle('hidden',q && !section.innerText.toLowerCase().includes(q));
+ });
+});
+</script>
+</body>
+</html>
